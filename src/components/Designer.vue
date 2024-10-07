@@ -35,10 +35,29 @@ import {
   hiprint,
   defaultElementTypeProvider,
   PrintTemplate,
+  Panel,
 } from "@sv-print/hiprint";
 import { onMounted } from "vue";
 import $ from "jquery";
 
+// 水印参数
+const defaultOption = {
+  id: "watermark", // 水印id
+  watch: false,
+  content: "ts-hiprint", // 水印内容
+  container: "#hiprint-printTemplate", // 水印容器
+  width: 200, // 水印宽度
+  height: 200, // 水印高度
+  textAlign: "center", // 水印文字水平对齐方式
+  textBaseline: "middle", // 水印文字垂直对齐方式
+  fontSize: "14px", // 水印文字大小
+  fontFamily: "Microsoft Yahei", // 水印文字字体
+  fillStyle: "rgba(184, 184, 184, 0.3)", // 水印文字颜色
+  rotate: 25, // 水印文字旋转角度
+  timestamp: false, // 是否显示时间戳
+  format: "YYYY-MM-DD HH:mm", // 时间戳格式
+  zIndex: 0,
+};
 let hiprintTemplate: PrintTemplate;
 function init() {
   // 初始化 provider , 才能让 "可拖拽元素" 可正常拖拽 【因为要先去处理 provider 中的 "tid"】
@@ -73,15 +92,25 @@ function init() {
   // 如果你只想打印, 那么 创建模板 对象 参数只需要 "初始模板 json" 然后调用 print/print2 即可
   // let printData = { text: "这是打印时显示的文本" };
   // hiprintTemplate.print(printData);
+  console.log(hiprintTemplate);
+
   disAutoConnect();
-  console.log(hiprintTemplate.printPanels.length);
-  
+  const mainPanel = hiprintTemplate.printPanels[0] as Panel;
+  // mainPanel.watermarkOptions = defaultOption;
+  // 添加水印
+  mainPanel.designPaper.createWaterMark(
+    true,
+    mainPanel.templateId,
+    defaultOption
+  );
 }
 
 function createPanel() {
   // 新建一个面板, 宽:100 高:100
-  //@ts-ignore
-  let panel = hiprintTemplate.addPrintPanel({ width: 600, height: 600 });
+  const panel = hiprintTemplate.printPanels[0] as Panel;
+
+  // let panel: Panel = hiprintTemplate.addPrintPanel({ width: 600, height: 600 });
+  console.log(hiprintTemplate.printPanels.length);
   // 面板中 添加一个文本
   panel.addPrintText({
     options: {
