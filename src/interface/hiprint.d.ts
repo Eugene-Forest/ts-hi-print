@@ -1,16 +1,78 @@
 /**
  * 实现对 @sv-print/hiprint 核心js 代码库的类型的二次封装
+ *
+ * 针对 class 的重写，按照通常的 Java 重写语法即可
+ *
+ * 针对 interface 的重写，通过 Pick 或者 Omit 语法实现继承即可
  */
 
 import "@sv-print/hiprint";
 
 declare module "@sv-print/hiprint" {
-  export declare interface PrintTemplate {
-    /** 新建一个面板 */
-    addPrintPanel(option: AddPanelOption): Panel;
+  export class hiprint {
+    /** 初始化 */
+    static init: (...args: any) => void;
+    static register: (...args: any) => void;
+    static setConfig: (...args: any) => void;
+    static updateElementType: (...args: any) => void;
+    static hiwebSocket: any;
+    static refreshPrinterList: (...args: any) => void;
+    static getAddress: (...args: any) => void;
+    static ippPrint: (...args: any) => void;
+    static ippRequest: (...args: any) => void;
+    static PrintElementTypeManager: any;
+    static PrintElementTypeGroup: any;
+    /** 模板 */
+    static PrintTemplate: TsPaintTemplate;
+    static print: (...args: any) => any;
+    static print2: (...args: any) => any;
+    static getHtml: (...args: any) => any;
+  }
+
+  export declare interface TsPaintTemplate extends Pick<PrintTemplate, "id"> {
+    constructor(options?: any);
+    id: string;
+    history: boolean;
+    historyPos: number;
+    historyList: Array<any>;
+    container: any;
+    editingPanel: Array<any>;
     /** 面板数组 */
     printPanels: Array<Panel>;
+    design: (...args: any) => any;
+    update: (...args: any) => any;
+    print: (...args: any) => any;
+    print2: (...args: any) => any;
+    getHtml: (...args: any) => any;
+    clear: () => any;
+    rotatePaper: () => any;
+    setPaper: () => any;
+    getOrient: () => any;
+    zoom: (...args: any) => any;
+    undo: () => any;
+    redo: () => any;
+    getPrintStyle: () => any;
+    getPaperType: () => any;
+    copyJson: () => any;
+    cutJson: () => any;
+    canPaste: () => boolean;
+    getSelectEls: (...args: any) => any;
+    updateOption: (...args: any) => any;
+    setElsAlign: (...args: any) => any;
+    setElsSpace: (...args: any) => any;
+    getJson: (...args: any) => any;
+    getJsonTid: (...args: any) => any;
+    getPrinterList: (...args: any) => any;
+    on: (...args: any) => any;
+    setFields: (...args: any) => any;
+    setFontList: (...args: any) => any;
+    setPaperList: (...args: any) => any;
+    setOnImageChooseClick: (...args: any) => any;
+    onDataChanged: (...args: any) => any;
+    /** 新建一个面板 */
+    addPrintPanel(option: AddPanelOption): Panel;
   }
+
   declare class DesignPaper {
     /**
      * 创建水印
@@ -24,6 +86,7 @@ declare module "@sv-print/hiprint" {
       option: WaterMarkOption
     );
   }
+
   /** 画板对象 */
   declare class Panel {
     /** ID */
@@ -50,6 +113,7 @@ declare module "@sv-print/hiprint" {
     addPrintHtml(...args: any): any;
   }
 
+  /** 画板参数 */
   interface AddPanelOption {
     width: number;
     height: number;

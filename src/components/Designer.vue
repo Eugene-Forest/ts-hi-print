@@ -34,8 +34,8 @@ import {
   disAutoConnect,
   hiprint,
   defaultElementTypeProvider,
-  PrintTemplate,
   Panel,
+  TsPaintTemplate,
 } from "@sv-print/hiprint";
 import { onMounted } from "vue";
 import $ from "jquery";
@@ -58,7 +58,7 @@ const defaultOption = {
   format: "YYYY-MM-DD HH:mm", // 时间戳格式
   zIndex: 0,
 };
-let hiprintTemplate: PrintTemplate;
+let hiprintTemplate: TsPaintTemplate
 function init() {
   // 初始化 provider , 才能让 "可拖拽元素" 可正常拖拽 【因为要先去处理 provider 中的 "tid"】
   hiprint.init({
@@ -92,10 +92,9 @@ function init() {
   // 如果你只想打印, 那么 创建模板 对象 参数只需要 "初始模板 json" 然后调用 print/print2 即可
   // let printData = { text: "这是打印时显示的文本" };
   // hiprintTemplate.print(printData);
-  console.log(hiprintTemplate);
-
+  // console.log(hiprintTemplate);
   disAutoConnect();
-  const mainPanel = hiprintTemplate.printPanels[0] as Panel;
+  const mainPanel = hiprintTemplate.printPanels[0];
   // mainPanel.watermarkOptions = defaultOption;
   // 添加水印
   mainPanel.designPaper.createWaterMark(
@@ -107,7 +106,7 @@ function init() {
 
 function createPanel() {
   // 新建一个面板, 宽:100 高:100
-  const panel = hiprintTemplate.printPanels[0] as Panel;
+  const panel = hiprintTemplate.printPanels[0];
 
   // let panel: Panel = hiprintTemplate.addPrintPanel({ width: 600, height: 600 });
   console.log(hiprintTemplate.printPanels.length);

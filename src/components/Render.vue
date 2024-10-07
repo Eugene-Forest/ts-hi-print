@@ -13,18 +13,18 @@
   </div>
 </template>
 <script setup lang="ts">
-
 import {
   autoConnect,
   disAutoConnect,
-  hiprint,
   defaultElementTypeProvider,
-  PrintTemplate,
+  TsPaintTemplate,
+  hiprint,
 } from "@sv-print/hiprint";
 import { onMounted } from "vue";
 import $ from "jquery";
-let hiprintTemplate: PrintTemplate;
+let hiprintTemplate: TsPaintTemplate;
 function init() {
+
   hiprint.init();
   // 有时可能是第二次进入此页面, 所以需要先清空 "拖拽设计器" 容器
   $("#hiprint-printTemplate").empty();
@@ -47,7 +47,6 @@ function init() {
 onMounted(() => {
   init();
 });
-
 </script>
 
 <style lang="css" scoped></style>
