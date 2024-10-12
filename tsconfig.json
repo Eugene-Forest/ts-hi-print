@@ -1,4 +1,18 @@
 {
+  "compilerOptions": {
+    "composite":false,
+    "baseUrl": ".",
+    "outDir": "dist",
+    "paths": {
+      "@/*": ["src/*"],
+      "ts-hi-print": ["./src"]
+    },
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node"
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

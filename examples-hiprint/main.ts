@@ -1,11 +1,10 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import "./style.css";
+import App from '../examples-hiprint/App.vue'
 // 引入组件样式
 import '@sv-print/hiprint/dist/style.css';
 
-import router from './route/router';
+import TSHIPRINT from 'ts-hi-print';
 
 createApp(App)
-    .use(router)
+    .use(TSHIPRINT)
     .mount('#app')

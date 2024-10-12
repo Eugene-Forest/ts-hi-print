@@ -30,11 +30,9 @@
 <script setup lang="ts">
 // 这里和 vue-plugin-hiprint 使用方式一样。
 import {
-  autoConnect,
   disAutoConnect,
   hiprint,
   defaultElementTypeProvider,
-  Panel,
   TsPaintTemplate,
 } from "@sv-print/hiprint";
 import { onMounted } from "vue";

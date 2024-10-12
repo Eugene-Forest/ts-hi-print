@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Designer from "../components/Designer.vue";
-import Render from "../components/Render.vue";
+import Designer from "../components/Design/Designer.vue";
+import Render from "../components/Render/Render.vue";
+
 
 const routes = [
   { path: "/", component: Designer },

@@ -14,9 +14,7 @@
 </template>
 <script setup lang="ts">
 import {
-  autoConnect,
   disAutoConnect,
-  defaultElementTypeProvider,
   TsPaintTemplate,
   hiprint,
 } from "@sv-print/hiprint";

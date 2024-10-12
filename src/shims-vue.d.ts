@@ -13,3 +13,4 @@ declare module "*.vue" {
 }
 
 declare module 'jquery';
+declare module 'ts-hi-print';
