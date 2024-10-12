@@ -1,21 +1,30 @@
-import { BuildOptions, defineConfig } from "vite";
+import { BuildOptions, defineConfig, PluginOption } from "vite";
 import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { resolve } from "path";
+// import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
-export default defineConfig(({command, mode}) => {
-  const isExampleDev = command === 'serve';
-  const isLibrary = mode === 'prod';
+export default defineConfig(({ command, mode }) => {
+  const isExampleDev = command === "serve";
+  const isLibrary = mode === "prod";
   let build: BuildOptions = {};
-
+  const plugins: PluginOption[] = [
+    vue(),
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ];
   if (isLibrary) {
     build = {
       lib: {
         entry: resolve(__dirname, "src/index.ts"),
-        name: "ts-hiprint",
+        name: "ts-hi-print",
         // the proper extensions will be added
         fileName: "index",
         formats: ["umd"],
@@ -31,11 +40,10 @@ export default defineConfig(({command, mode}) => {
         },
       },
     };
-  };
+    // plugins.push(dts({ tsconfigPath: './tsconfig.json' }));
+  }
   if (isExampleDev) {
-    build = {
-
-    }
+    build = {};
   }
   return {
     base: "./",
@@ -44,23 +52,16 @@ export default defineConfig(({command, mode}) => {
       // resolve.alias: 更轻松地为import或require某些模块创建别名
       alias: [
         {
-          find: '@',
-          replacement: resolve(__dirname, "./src")
-        }, {
-          find: 'ts-hi-print',
-          replacement: resolve(__dirname, './src')
-        }
-      ]
+          find: "@",
+          replacement: resolve(__dirname, "./src"),
+        },
+        {
+          find: "ts-hi-print",
+          replacement: resolve(__dirname, "./src"),
+        },
+      ],
     },
-    plugins: [
-      vue(),
-      AutoImport({
-        resolvers: [ElementPlusResolver()],
-      }),
-      Components({
-        resolvers: [ElementPlusResolver()],
-      }),
-    ],
+    plugins,
     build,
   };
 });
