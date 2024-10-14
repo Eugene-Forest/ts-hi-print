@@ -106,6 +106,8 @@ function createPanel() {
   // 新建一个面板, 宽:100 高:100
   const panel = hiprintTemplate.printPanels[0];
 
+  panel.addPrintTable({ options: { width: 252, height: 35, top: 130, left: 20, content: $('#testTable').html() } });
+
   // let panel: Panel = hiprintTemplate.addPrintPanel({ width: 600, height: 600 });
   console.log(hiprintTemplate.printPanels.length);
   // 面板中 添加一个文本
