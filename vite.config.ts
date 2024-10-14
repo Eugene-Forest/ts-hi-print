@@ -39,9 +39,16 @@ export default defineConfig(({ command, mode }) => {
           },
         },
       },
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
     };
     // 使用 dts 插件进行 .d.ts 声明文件的打包生成；并 指定 tsconfig.app.json 文件才是参考（主要读取 include 和 exclude 等配置）
-    plugins.push(dts({ tsconfigPath: './tsconfig.app.json' }));
+    plugins.push(dts({ tsconfigPath: "./tsconfig.app.json" }));
   }
   if (isExampleDev) {
     build = {};
