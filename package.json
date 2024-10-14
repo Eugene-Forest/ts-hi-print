@@ -10,6 +10,13 @@
   "files": [
     "dist"
   ],
+  "keywords":[
+    "vue",
+    "hiprint",
+    "@sv-print/hiprint",
+    "print"
+  ],
+  "url":"https://gitee.com/eugene-forest/ts-hi-print.git",
   "license": "MIT",
   "description": "@sv-print/hiprint核心包的Type类型封装",
   "scripts": {
