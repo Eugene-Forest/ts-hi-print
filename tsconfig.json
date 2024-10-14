@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "composite":false,
     "baseUrl": ".",
     "outDir": "dist",
     "paths": {
@@ -11,7 +10,7 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
   },
   "files": [],
   "references": [

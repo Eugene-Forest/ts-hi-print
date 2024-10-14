@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "composite":false,
+    "composite":true,
     "target": "ES2022",
     "lib": ["ES2023"],
     "module": "ESNext",
@@ -19,5 +19,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "public",
+    "examples-hiprint"
+  ],
 }

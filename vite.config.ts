@@ -4,7 +4,7 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { resolve } from "path";
-// import dts from "vite-plugin-dts";
+import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -40,7 +40,8 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     };
-    // plugins.push(dts({ tsconfigPath: './tsconfig.json' }));
+    // 使用 dts 插件进行 .d.ts 声明文件的打包生成；并 指定 tsconfig.app.json 文件才是参考（主要读取 include 和 exclude 等配置）
+    plugins.push(dts({ tsconfigPath: './tsconfig.app.json' }));
   }
   if (isExampleDev) {
     build = {};
