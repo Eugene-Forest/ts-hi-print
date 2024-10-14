@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ts-hiprint": "^0.0.14",
     "vue": "^3.4.37"
   },
   "devDependencies": {

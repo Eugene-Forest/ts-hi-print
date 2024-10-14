@@ -1,5 +1,9 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import "ts-hiprint/dist/style.css";
+import TsHiprint from "ts-hiprint";
+
+createApp(App)
+    .use(TsHiprint)
+    .mount('#app')
