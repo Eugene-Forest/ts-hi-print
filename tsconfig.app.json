@@ -4,6 +4,7 @@
     "outDir": "dist",
     "declarationDir": "dist",
     "emitDeclarationOnly": true,
+    "declaration": true,
     /** composite 为 true 会生成 tsbuildinfo 文件 */
     "composite": true,
     "target": "ESNext",
@@ -29,5 +30,5 @@
     "types": ["element-plus/global"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules", "dist", "public", "examples-hiprint", "src/route/*"]
+  "exclude": ["node_modules", "dist", "examples", "src/route/*"]
 }

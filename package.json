@@ -1,11 +1,12 @@
 {
   "name": "ts-hi-print",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.11",
   "author": "PengWQ",
   "type": "module",
-  "main": "./dist/index.umd.cjs",
-  "types": "./dist/src/index.d.ts",
+  "main": "dist/index.umd.cjs",
+  "module": "dist/index.umd.cjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],

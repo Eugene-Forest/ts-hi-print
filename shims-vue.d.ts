@@ -12,5 +12,4 @@ declare module "*.vue" {
   export default component;
 }
 
-declare module 'jquery';
 declare module 'ts-hi-print';

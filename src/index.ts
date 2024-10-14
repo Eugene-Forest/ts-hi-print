@@ -1,4 +1,4 @@
-import { App } from "vue";
+import { App, Plugin } from "vue";
 
 // 引入组件样式
 import "@sv-print/hiprint/dist/style.css";
@@ -7,20 +7,19 @@ import { TsRender } from "./components/Render";
 import { TsMain } from "./components/Main";
 import { hiprint } from "@sv-print/hiprint";
 
-
 const components = [TsDesigner, TsRender, TsMain];
 
-const install = function (app: App) {
-  components.map((c) => {
-    app.component(c.name!, c);
-  });
+const TsHiPrint: Plugin = {
+  install(app: App) {
+    components.map((c) => {
+      app.component(c.name!, c);
+    });
+  },
 };
 
-export default {
-  install
-};
+export default TsHiPrint;
 
-export * from './components';
-export * from './interface';
+export * from "./components";
+export * from "./interface";
 
-export { hiprint }
+export { hiprint };

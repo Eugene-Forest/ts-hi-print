@@ -22,6 +22,7 @@ export default defineConfig(({ command, mode }) => {
   ];
   if (isLibrary) {
     build = {
+      outDir:"dist",
       lib: {
         entry: resolve(__dirname, "src/index.ts"),
         name: "ts-hi-print",
@@ -36,10 +37,12 @@ export default defineConfig(({ command, mode }) => {
           // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
           globals: {
             vue: "Vue",
+            "element-plus": "ElementPlus",
+            "ts-hi-print":"ts-hi-print",
           },
         },
       },
-      minify: 'terser',
+      minify: "terser",
       terserOptions: {
         compress: {
           drop_console: true,
@@ -47,8 +50,16 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     };
-    // 使用 dts 插件进行 .d.ts 声明文件的打包生成；并 指定 tsconfig.app.json 文件才是参考（主要读取 include 和 exclude 等配置）
-    plugins.push(dts({ tsconfigPath: "./tsconfig.app.json" }));
+    // 使用 dts 插件进行 .d.ts 声明文件的打包生成；并 指定 tsconfig.app.json 文件才是参考（主要读取 include 和 exclude 等配置）;
+    // rollupTypes 是否合并所有dts文件;cleanVueFileName 去除 vue.d.ts文件声明
+    plugins.push(
+      dts({
+        tsconfigPath: "./tsconfig.app.json",
+        cleanVueFileName: true,
+        insertTypesEntry: true,
+        rollupTypes:true
+      }),
+    );
   }
   if (isExampleDev) {
     build = {};
