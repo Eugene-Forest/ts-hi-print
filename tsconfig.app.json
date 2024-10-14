@@ -4,7 +4,7 @@
     "outDir": "dist",
     "declarationDir": "dist",
     "emitDeclarationOnly": true,
-
+    /** composite 为 true 会生成 tsbuildinfo 文件 */
     "composite": true,
     "target": "ESNext",
     "useDefineForClassFields": true,
