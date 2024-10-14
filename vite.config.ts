@@ -25,7 +25,7 @@ export default defineConfig(({ command, mode }) => {
       outDir:"dist",
       lib: {
         entry: resolve(__dirname, "src/index.ts"),
-        name: "ts-hi-print",
+        name: "ts-hiprint",
         // the proper extensions will be added
         fileName: "index",
         formats: ["umd"],
@@ -38,7 +38,7 @@ export default defineConfig(({ command, mode }) => {
           globals: {
             vue: "Vue",
             "element-plus": "ElementPlus",
-            "ts-hi-print":"ts-hi-print",
+            "ts-hiprint":"ts-hiprint",
           },
         },
       },
@@ -75,7 +75,7 @@ export default defineConfig(({ command, mode }) => {
           replacement: resolve(__dirname, "./src"),
         },
         {
-          find: "ts-hi-print",
+          find: "ts-hiprint",
           replacement: resolve(__dirname, "./src"),
         },
       ],

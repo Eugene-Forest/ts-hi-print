@@ -4,7 +4,7 @@
     "outDir": "dist",
     "paths": {
       "@/*": ["src/*"],
-      "ts-hi-print": ["./src"]
+      "ts-hiprint": ["./src"]
     },
     "target": "esnext",
     "module": "esnext",

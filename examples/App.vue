@@ -3,5 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-import { TsMain } from 'ts-hi-print';
+import { TsMain } from 'ts-hiprint';
 </script>

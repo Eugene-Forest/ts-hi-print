@@ -12,4 +12,4 @@ declare module "*.vue" {
   export default component;
 }
 
-declare module 'ts-hi-print';
+declare module 'ts-hiprint';
